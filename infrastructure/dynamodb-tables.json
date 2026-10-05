@@ -1,0 +1,50 @@
+[
+  {
+    "TableName": "smart-campus-complaints",
+    "BillingMode": "PAY_PER_REQUEST",
+    "AttributeDefinitions": [
+      { "AttributeName": "complaintId", "AttributeType": "S" },
+      { "AttributeName": "studentId",   "AttributeType": "S" },
+      { "AttributeName": "status",      "AttributeType": "S" }
+    ],
+    "KeySchema": [
+      { "AttributeName": "complaintId", "KeyType": "HASH" }
+    ],
+    "GlobalSecondaryIndexes": [
+      {
+        "IndexName": "studentId-index",
+        "KeySchema": [
+          { "AttributeName": "studentId", "KeyType": "HASH" }
+        ],
+        "Projection": { "ProjectionType": "ALL" }
+      },
+      {
+        "IndexName": "status-index",
+        "KeySchema": [
+          { "AttributeName": "status", "KeyType": "HASH" }
+        ],
+        "Projection": { "ProjectionType": "ALL" }
+      }
+    ]
+  },
+  {
+    "TableName": "smart-campus-users",
+    "BillingMode": "PAY_PER_REQUEST",
+    "AttributeDefinitions": [
+      { "AttributeName": "userId", "AttributeType": "S" }
+    ],
+    "KeySchema": [
+      { "AttributeName": "userId", "KeyType": "HASH" }
+    ]
+  },
+  {
+    "TableName": "smart-campus-counters",
+    "BillingMode": "PAY_PER_REQUEST",
+    "AttributeDefinitions": [
+      { "AttributeName": "counterId", "AttributeType": "S" }
+    ],
+    "KeySchema": [
+      { "AttributeName": "counterId", "KeyType": "HASH" }
+    ]
+  }
+]
